@@ -55,17 +55,17 @@ namespace DGD203_2
             Console.WriteLine("You remembered why you were here.");
             Thread.Sleep(2000);
             Console.WriteLine("After all the nonsense you saw at school,");
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             Console.WriteLine("you just wanted to take a walk to clear your mind.");
             Thread.Sleep(2000);
             Console.WriteLine("When you look around, you realize you're in Mecidiyekoy.");
             Thread.Sleep(2000);
             Console.WriteLine("You've looked all of your pockets but...");
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             Console.WriteLine("you couldn't find your Istanbul card.");
             Thread.Sleep(2000);
             Console.WriteLine("You think you might have dropped it when...");
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             Console.WriteLine("getting out of the vehicle, so you start looking around.");
             Thread.Sleep(2000);
             Console.Clear();
@@ -253,7 +253,7 @@ namespace DGD203_2
 
         public void EndGame()
         {
-            Console.WriteLine("We hope you enjoyed our game!");
+            Console.WriteLine("I hope you enjoyed my game!");
             _gameRunning = false;
         }
 
@@ -333,10 +333,10 @@ namespace DGD203_2
         private string HelpMessage()
         {
             return @"Here are the current commands:
-N: go north
-S: go south
-W: go west
-E: go east
+N = NORTH = UP (means 0,1)
+S = SOUTH = DOWN (means 0,-1)
+W = WEST = LEFT (means -1,0)
+E = EAST = RIGHT (means 1,0)
 load: Load saved game
 save: save current game
 exit: exit the game

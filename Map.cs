@@ -220,8 +220,8 @@ public class Map
             {
                 Console.WriteLine($"You are in {location.Name} {location.Type}");
                 CheckGrandmaInteraction(coordinates);
+                
             }
-
             else if (location.Type == LocationType.Beach)
             {
                 Console.WriteLine($"You are in {location.Name} {location.Type}");
@@ -242,14 +242,12 @@ public class Map
                 {
                     Meditation();
                 }
-
-            }
+                            }
             else if (location.Type == LocationType.High_School && _theGame.Player.QuestCompleted) 
             {
                 Console.Clear();
-                Console.WriteLine($"You are in {location.Name} {location.Type}");
                 Thread.Sleep(2000);
-                Console.WriteLine("You are at the school again");
+                Console.WriteLine("You are at the Şehremini High School.");
                 Thread.Sleep(2000);
                 Console.WriteLine("You arrived just in time");
                 Thread.Sleep(2000);
@@ -261,7 +259,6 @@ public class Map
                 Thread.Sleep(2000);
                 _theGame.EndGame();
             }
-
             else
             {
                 Console.WriteLine($"You are in {location.Name} {location.Type}");
@@ -274,19 +271,54 @@ public class Map
             }
         }
         Console.WriteLine("Which way you want to go? ");
+        
     }
 
     private void CheckGrandmaInteraction(Vector2 playerCoordinates)
     {
         if (_grandmaNPC.IsAtLocation(playerCoordinates))
         {
-            if (!_theGame.Player.QuestCompleted)
+            if (!_theGame.Player.QuestCompleted && _theGame.Player.Inventory.Contains(Item.Delight))
             {
                 Console.WriteLine("Grandma says: ");
+                Thread.Sleep(2000);
+                Console.WriteLine("Hello dear!");
+                Thread.Sleep(2000);
+                Console.WriteLine("Oh, what a coincidence! I was going to ask you for some Turkish Delight actually..");
+                Thread.Sleep(2000);
+                Console.WriteLine("Thank you for bringing the delight! Let me prepare some Turkish Coffee .");
+                Thread.Sleep(3000);
+                Console.Clear();
+                Thread.Sleep(1000);
+                Console.WriteLine("After drinking coffee with your grandma...");
+                Thread.Sleep(2000);
+                Console.WriteLine("something sparks in your head.");
+                Thread.Sleep(2000);
+                Console.WriteLine("You were on the lunch break of school.");
+                Thread.Sleep(2000);
+                Console.WriteLine("So you need to find your way to school again befor its too late. ");
+                Thread.Sleep(3000);
+                Console.Clear();
+                Thread.Sleep(1000);
+                _theGame.Player.QuestCompleted = true;
+
+                _theGame.Player.Inventory.RemoveItem(Item.Delight);
+                Console.WriteLine($"You are now standing on {_coordinates[0]},{_coordinates[1]}");
+
+
+
+
+
+
+            }
+            else if (!_theGame.Player.QuestCompleted)
+            {
+                Console.WriteLine("Grandma says: ");
+                Thread.Sleep(1000);
                 Console.WriteLine("Hello dear!");
 
                 if (_theGame.Player.HasAcceptedQuest)
-                {                  
+                {
                     if (_theGame.Player.Inventory.Contains(Item.Delight))
                     {
                         Thread.Sleep(1000);
@@ -304,7 +336,7 @@ public class Map
                         Thread.Sleep(1000);
                         _theGame.Player.QuestCompleted = true;
 
-                                   _theGame.Player.Inventory.RemoveItem(Item.Delight);
+                        _theGame.Player.Inventory.RemoveItem(Item.Delight);
                         Console.WriteLine($"You are now standing on {_coordinates[0]},{_coordinates[1]}");
                     }
                     else
